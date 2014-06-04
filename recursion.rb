@@ -1,4 +1,5 @@
 def range(start_num, end_num)
+  return [] if end_num < start_num
   if start_num == end_num
     return [end_num]
   end
@@ -6,22 +7,18 @@ def range(start_num, end_num)
 end
 
 def sum(arr)
-  if arr.empty?
-    return 0
-  end
+  return 0 if arr.empty?
   arr.first + sum(arr[1..-1])
 end
 
 def sum_iter(arr)
   sum = 0
-  arr.each { |el| sum += el}
+  arr.each { |el| sum += el }
   sum
 end
 
 def exp1(b, n)
-  if n == 0
-    return 1
-  end
+  return 1 if n == 0
   b * exp1(b, n - 1)
 end
 
@@ -37,8 +34,8 @@ end
 
 class Array
   def deep_dup
-    new_array = Array.new
-    self.each do |el|
+    new_array = []
+    each do |el|
       if el.is_a?(Array)
         new_array << el.deep_dup
       else
@@ -61,7 +58,7 @@ def fib_recur(n)
 end
 
 def fib_iter(n)
-  fibs = [0,1]
+  fibs = [0, 1]
   if n <= 2
     fibs.take(n)
   else
@@ -116,7 +113,6 @@ end
 
 
 def merge_sort(array)
-
   if array.count == 1
     return array
   end
